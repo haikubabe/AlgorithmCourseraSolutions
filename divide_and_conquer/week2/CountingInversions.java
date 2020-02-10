@@ -1,4 +1,4 @@
-package divide_and_conquer.week1;
+package divide_and_conquer.week2;
 
 public class CountingInversions {
 
