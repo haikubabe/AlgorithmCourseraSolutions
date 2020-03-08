@@ -46,7 +46,8 @@ public class MergeSort
     }
 
     public static void main(String[] args) {
-        int[] arr = {5,4,1,8,7,2,6,3};
+//        int[] arr = {5,4,1,8,7,2,6,3};
+        int[] arr = {5,3,8,9,1,7,0,2,6,4};
         int n = arr.length;
         mergeSort(arr, 0, n - 1);
         for (int i = 0; i < n; i++) {

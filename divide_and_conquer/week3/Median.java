@@ -29,5 +29,6 @@ public class Median
         System.out.println(median(2,3,1));
         System.out.println(median(-2,-8,20));
         System.out.println(median(15,20,10));
+        System.out.println(median(3,9,5));
     }
 }
