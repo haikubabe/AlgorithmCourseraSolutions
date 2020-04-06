@@ -197,7 +197,7 @@ public class Median
                     int min = minHeap.extractMin();
                     maxHeap.insert(min);
                 }
-                diff = (maxHeap.size > minHeap.size) ? maxHeap.size - minHeap.size : minHeap.size - maxHeap.size;;
+                diff = (maxHeap.size > minHeap.size) ? maxHeap.size - minHeap.size : minHeap.size - maxHeap.size;
             }
 
             if (maxHeap.size == minHeap.size || maxHeap.size > minHeap.size) {
