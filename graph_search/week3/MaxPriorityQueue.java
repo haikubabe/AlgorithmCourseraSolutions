@@ -1,14 +1,14 @@
 package graph_search.week3;
 
 /**
- * Max Heap
+ * Implementation of Max Priority Queue using Max Heap
  */
-public class MaxHeap
+public class MaxPriorityQueue
 {
     private int[] maxHeap;
     public int size;
 
-    public MaxHeap(int n) {
+    public MaxPriorityQueue(int n) {
         maxHeap = new int[n];
         size = 0;
     }
@@ -77,36 +77,36 @@ public class MaxHeap
     }
 
     public void insert(int key) {
-        int size = this.size - 1;
+        int index = this.size - 1;
         this.size++;
-        maxHeap[++size] = Integer.MIN_VALUE;
+        maxHeap[++index] = Integer.MIN_VALUE;
         increaseKey(size, key);
     }
 
     public static void main(String[] args)
     {
-        MaxHeap heap = new MaxHeap(10);
-        heap.insert(7);
-        heap.insert(3);
-        heap.insert(9);
-        heap.insert(6);
-        heap.insert(4);
-        heap.insert(8);
-        heap.insert(1);
-        heap.insert(2);
-        heap.insert(10);
-        heap.insert(5);
+        MaxPriorityQueue queue = new MaxPriorityQueue(10);
+        queue.insert(7);
+        queue.insert(3);
+        queue.insert(9);
+        queue.insert(6);
+        queue.insert(4);
+        queue.insert(8);
+        queue.insert(1);
+        queue.insert(2);
+        queue.insert(10);
+        queue.insert(5);
 
-        for (int i = 0;i<heap.size; i++) {
-            System.out.print(heap.maxHeap[i] + " ");
+        for (int i = 0;i<queue.size; i++) {
+            System.out.print(queue.maxHeap[i] + " ");
         }
 
         System.out.println();
         System.out.println("Extract Max");
-        System.out.println(heap.extractMax());
+        System.out.println(queue.extractMax());
 
-        for (int i = 0;i<heap.size; i++) {
-            System.out.print(heap.maxHeap[i] + " ");
+        for (int i = 0;i<queue.size; i++) {
+            System.out.print(queue.maxHeap[i] + " ");
         }
     }
 }

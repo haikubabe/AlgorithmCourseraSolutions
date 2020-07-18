@@ -1,14 +1,14 @@
 package graph_search.week3;
 
 /**
- * Min Heap
+ * Implementation of Min Priority Queue using Min Heap
  */
-public class MinHeap
+public class MinPriorityQueue
 {
     private int[] minHeap;
     public int size;
 
-    public MinHeap(int n) {
+    public MinPriorityQueue(int n) {
         minHeap = new int[n];
         size = 0;
     }
@@ -85,28 +85,28 @@ public class MinHeap
 
     public static void main(String[] args)
     {
-        MinHeap heap = new MinHeap(10);
-        heap.insert(7);
-        heap.insert(3);
-        heap.insert(9);
-        heap.insert(6);
-        heap.insert(4);
-        heap.insert(8);
-        heap.insert(1);
-        heap.insert(2);
-        heap.insert(10);
-        heap.insert(5);
+        MinPriorityQueue queue = new MinPriorityQueue(10);
+        queue.insert(7);
+        queue.insert(3);
+        queue.insert(9);
+        queue.insert(6);
+        queue.insert(4);
+        queue.insert(8);
+        queue.insert(1);
+        queue.insert(2);
+        queue.insert(10);
+        queue.insert(5);
 
-        for (int i = 0;i<heap.size; i++) {
-            System.out.print(heap.minHeap[i] + " ");
+        for (int i = 0;i<queue.size; i++) {
+            System.out.print(queue.minHeap[i] + " ");
         }
 
         System.out.println();
         System.out.println("Extract Min");
-        System.out.println(heap.extractMin());
+        System.out.println(queue.extractMin());
 
-        for (int i = 0;i<heap.size; i++) {
-            System.out.print(heap.minHeap[i] + " ");
+        for (int i = 0;i<queue.size; i++) {
+            System.out.print(queue.minHeap[i] + " ");
         }
     }
 }
