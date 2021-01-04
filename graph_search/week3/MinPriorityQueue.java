@@ -6,11 +6,13 @@ package graph_search.week3;
 public class MinPriorityQueue
 {
     private int[] minHeap;
-    public int size;
+    private int size;
+    private int index;
 
     public MinPriorityQueue(int n) {
-        minHeap = new int[n];
-        size = 0;
+        this.minHeap = new int[n];
+        this.size = 0;
+        this.index = -1;
     }
 
     private int leftChild(int i) {
@@ -60,13 +62,15 @@ public class MinPriorityQueue
         return min;
     }
 
-    private void decreaseKey(int i, int key) {
-        if (key > minHeap[i]) {
-            System.out.println("key cannot be greater than A[i]");
+    private void decreaseKey(int key) {
+        if (index == size) {
+            System.out.println("Cannot insert any more elements. Size is full");
             return;
         }
-        minHeap[i] = key;
-        int parentIndex = parent(i);
+        minHeap[++index] = key;
+        size++;
+        int parentIndex = parent(index);
+        int i = index;
         while (i>0 && minHeap[i]<minHeap[parentIndex]) {
             int temp = minHeap[i];
             minHeap[i] = minHeap[parentIndex];
@@ -77,10 +81,7 @@ public class MinPriorityQueue
     }
 
     public void insert(int key) {
-        int size = this.size - 1;
-        this.size++;
-        minHeap[++size] = Integer.MAX_VALUE;
-        decreaseKey(size, key);
+        decreaseKey(key);
     }
 
     public static void main(String[] args)

@@ -6,11 +6,13 @@ package graph_search.week3;
 public class MaxPriorityQueue
 {
     private int[] maxHeap;
-    public int size;
+    private int size;
+    private int index;
 
     public MaxPriorityQueue(int n) {
-        maxHeap = new int[n];
-        size = 0;
+        this.maxHeap = new int[n];
+        this.size = 0;
+        this.index = -1;
     }
 
     private int leftChild(int i) {
@@ -48,11 +50,11 @@ public class MaxPriorityQueue
         }
     }
 
-    public int getMax() {
+    private int getMax() {
         return maxHeap[0];
     }
 
-    public int extractMax() {
+    private int extractMax() {
         int max = maxHeap[0];
         maxHeap[0] = maxHeap[size - 1];
         size--;
@@ -60,13 +62,15 @@ public class MaxPriorityQueue
         return max;
     }
 
-    private void increaseKey(int i, int key) {
-        if (key < maxHeap[i]) {
-            System.out.println("key cannot be less than A[i]");
+    private void increaseKey(int key) {
+        if (index == size) {
+            System.out.println("Cannot insert any more elements. Size is full");
             return;
         }
-        maxHeap[i] = key;
-        int parentIndex = parent(i);
+        maxHeap[++index] = key;
+        size++;
+        int parentIndex = parent(index);
+        int i = index;
         while (i>0 && maxHeap[i]>maxHeap[parentIndex]) {
             int temp = maxHeap[i];
             maxHeap[i] = maxHeap[parentIndex];
@@ -76,11 +80,18 @@ public class MaxPriorityQueue
         }
     }
 
-    public void insert(int key) {
-        int index = this.size - 1;
-        this.size++;
-        maxHeap[++index] = Integer.MIN_VALUE;
-        increaseKey(size, key);
+    private void insert(int key) {
+        increaseKey(key);
+    }
+
+    private void delete(int index) {
+        if (index >= 0 && index < size) {
+            int temp = maxHeap[index];
+            maxHeap[index] = maxHeap[size-1];
+            maxHeap[size-1] = temp;
+            maxHeapify(index);
+            size--;
+        }
     }
 
     public static void main(String[] args)
@@ -105,6 +116,11 @@ public class MaxPriorityQueue
         System.out.println("Extract Max");
         System.out.println(queue.extractMax());
 
+        for (int i = 0;i<queue.size; i++) {
+            System.out.print(queue.maxHeap[i] + " ");
+        }
+        System.out.println();
+        queue.delete(1);
         for (int i = 0;i<queue.size; i++) {
             System.out.print(queue.maxHeap[i] + " ");
         }
